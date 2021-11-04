@@ -169,7 +169,6 @@ describe('Todos', () => {
       });
 
     const todoDate = new Date();
-
     const todo1Response = await request(app)
       .post('/todos')
       .send({
@@ -177,12 +176,10 @@ describe('Todos', () => {
         deadline: todoDate
       })
       .set('username', userResponse.body.username);
-
     await request(app)
       .delete(`/todos/${todo1Response.body.id}`)
       .set('username', userResponse.body.username)
       .expect(204);
-
     const listResponse = await request(app)
       .get('/todos')
       .set('username', userResponse.body.username);
